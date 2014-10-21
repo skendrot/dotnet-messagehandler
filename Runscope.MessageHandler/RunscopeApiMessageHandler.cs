@@ -11,13 +11,13 @@ using Runscope.Links;
 using Runscope.Messages;
 namespace Runscope
 {
-    public class RunscopeMessageHandler : DelegatingHandler
+    public class RunscopeApiMessageHandler : DelegatingHandler
     {
         private readonly string _bucketKey;
         private readonly Func<HttpRequestMessage, HttpResponseMessage, bool> _filter;
         private readonly HttpClient _RunscopeClient;
 
-        public RunscopeMessageHandler(string authtoken, 
+        public RunscopeApiMessageHandler(string authtoken, 
                                       string bucketKey,
                                       string runscopeApi = "https://api.runscope.com",
                                       Func<HttpRequestMessage, HttpResponseMessage,bool> filter = null
@@ -44,7 +44,7 @@ namespace Runscope
             if (_filter == null || _filter(request, response))
             {
                 
-                var runscopeMessage2 = new RunscopeMessage()
+                var runscopeMessage = new RunscopeMessage()
                 {
                     Request = runscopeRequest,
                     Response = new RunscopeResponse(response)
@@ -52,7 +52,7 @@ namespace Runscope
 
                 var messagesLink = new MessagesLink();
                 HandleFailedMessageLog(
-                    _RunscopeClient.SendAsync(messagesLink.Update(_bucketKey, runscopeMessage2).CreateRequest()));
+                    _RunscopeClient.SendAsync(messagesLink.Update(_bucketKey, runscopeMessage).CreateRequest()));
             }
             return response;
         }

@@ -11,7 +11,7 @@
     <releaseNotes>Added Api and Proxy MessageHandlers</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <dependencies>
-      <dependency id="Runscope.WebPack" version="0.9.4" />
+      <dependency id="Runscope.WebPack" version="0.9.5" />
     </dependencies>
   </metadata>
   <files>
