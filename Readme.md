@@ -14,7 +14,8 @@ Runscope Proxy Message Handler for use with System.Net.Http.HttpClient
     PM> Install-Package Runscope.Contrib -Pre   
 
 
-### Example
+### Runscope Proxy Message Handler
+This message handle is useful when you are consuming an API.
 
     using System.Net.Http;
     using Runscope.Contrib;
@@ -27,5 +28,6 @@ Runscope Proxy Message Handler for use with System.Net.Http.HttpClient
 
 
 ##Runscope API Message Handler
+This message handler is useful when you are a provider of an API.  It can also be used from the client, but that would expose your API key in the client.
 
 See this (http://bizcoder.com/add-runscope-logging-to-your-asp-net-web-api-in-minutes) blog post for details on how to use the RunscopeAPIMessageHandler.
