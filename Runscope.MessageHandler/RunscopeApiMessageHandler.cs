@@ -74,7 +74,7 @@ namespace Runscope
 
                 var messagesLink = new MessagesLink();
                 HandleFailedMessageLog(
-                    _RunscopeClient.SendAsync(messagesLink.Update(_bucketKey, runscopeMessage).CreateRequest()));
+                    _RunscopeClient.SendAsync(messagesLink.Update(bucket, runscopeMessage).CreateRequest()));
             }
             return response;
         }
