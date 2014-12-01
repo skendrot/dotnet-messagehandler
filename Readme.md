@@ -28,4 +28,4 @@ Runscope Proxy Message Handler for use with System.Net.Http.HttpClient
 
 ##Runscope API Message Handler
 
-Description pending...
+See this (http://bizcoder.com/add-runscope-logging-to-your-asp-net-web-api-in-minutes) blog post for details on how to use the RunscopeAPIMessageHandler.
