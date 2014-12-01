@@ -23,27 +23,28 @@ namespace Runscope
                                       string runscopeApi = "https://api.runscope.com",
                                       Func<HttpRequestMessage, HttpResponseMessage, bool> filter = null
                                        )
+            : this(authtoken, runscopeApi)
         {
             _bucketKey = bucketKey;
             _filter = filter;
-            _RunscopeClient = new HttpClient()
-            {
-                BaseAddress = new Uri(runscopeApi)
-            };
-            _RunscopeClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", authtoken);
         }
 
         public RunscopeApiMessageHandler(string authtoken,
                                 string runscopeApi = "https://api.runscope.com",
                                 Func<HttpRequestMessage, HttpResponseMessage, string> bucketFilter = null
-                                 )
+                                 ) : this(authtoken, runscopeApi)
         {
             _bucketFilter = bucketFilter;
+        }
+
+        private RunscopeApiMessageHandler(string authtoken, string runscopeApi)
+        {
             _RunscopeClient = new HttpClient()
             {
                 BaseAddress = new Uri(runscopeApi)
             };
             _RunscopeClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", authtoken);
+
         }
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
